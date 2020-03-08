@@ -134,6 +134,6 @@ Thumbs.db
 ##############
 node_modules/
 bundle
-
+.cache
 .vendor-new
 yarn.lock

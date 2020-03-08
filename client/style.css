@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  align-items: center;
+  background-color: #007d9c;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  height: 64px;
+  justify-content: flex-start;
+  padding: 0 1rem;
+}
+
+#header h1 {
+  font-size: 1.3rem;
+}
+
+#header img {
+  margin-right: 1.5rem;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64px);
+  justify-content: center;
+  width: 100%;
+}
+
+#chat {
+  border: 1px solid red;
+}
+
+#chat-items {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#chat-items .message .error {
+  background-color: red;
+  color: #ffffff;
+}
