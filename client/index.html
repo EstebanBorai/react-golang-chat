@@ -13,13 +13,20 @@
     <h1>simple-ws-in-go</h1>
   </header>
   <main>
-    <div id="chat">
+    <section id="chat" class="hidden">
       <ul id="chat-items"></ul>
       <form action="" id="chat-box">
         <input type="text" name="message" />
         <button type="button" id="send-btn">Submit</button>
       </form>
-    </div>
+    </section>
+    <section id="login">
+      <h2>Login to Chat</h2>
+      <form action="" id="login-form">
+        <input type="text" name="username" />
+        <button type="button" id="send-btn">Chat now!</button>
+      </form>
+    </section>
   </main>
   <script src="./index.js"></script>
 </body>

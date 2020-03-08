@@ -31,8 +31,12 @@ Messenger.prototype.init = function() {
   );
 }
 
+Messenger.prototype.login = function(username) {
+  this.webSocket.next({ type: 'login', data: username })
+}
+
 Messenger.prototype.send = function(message) {
-  this.webSocket.next({ message, user: 'User 1' });
+  this.webSocket.next({ type: 'message', user: 'User 1', data: message });
 }
 
 export default Messenger;
