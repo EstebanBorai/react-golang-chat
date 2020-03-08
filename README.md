@@ -1,2 +1,2 @@
 # simple-ws-in-go
-🐹 Simple WebSockets with gobwas/ws package for Go
+🐹 A simple chat application made with RxJS and gobwas/ws package for Go
