@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+:root {
+  --primary: #007d9c;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
@@ -8,13 +12,17 @@ body {
 
 #header {
   align-items: center;
-  background-color: #007d9c;
+  background-color: var(--primary);
   box-sizing: border-box;
   color: #ffffff;
   display: flex;
   height: 64px;
   justify-content: flex-start;
   padding: 0 1rem;
+}
+
+.hidden {
+  display: none;
 }
 
 #header h1 {
@@ -47,4 +55,33 @@ main {
 #chat-items .message .error {
   background-color: red;
   color: #ffffff;
+}
+
+input {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+button {
+  background-color: var(--primary);
+  border: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: .6rem .9rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#login-form input {
+  font-size: 1rem;
 }
