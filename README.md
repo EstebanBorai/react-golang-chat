@@ -1,2 +1,2 @@
 # simple-ws-in-go
-🐹 A simple chat application made with RxJS and gobwas/ws package for Go
+🐹 A simple chat application made with Vue.js and Go using gobwas/ws
