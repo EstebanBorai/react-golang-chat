@@ -19,6 +19,12 @@
     margin: 0;
     padding: 0;
   }
+
+  .app-section {
+    display: flex;
+    height: calc(100vh - 64px);
+    justify-content: center;
+  }
 </style>
 
 <script>
