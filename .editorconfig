@@ -8,5 +8,5 @@ indent_size = 2
 [*.{go}]
 indent_style = tab
 
-[*.{js, vue, yml}]
+[*.{ts, js}]
 indent_style = space
