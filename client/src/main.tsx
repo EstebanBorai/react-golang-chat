@@ -1,12 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
-const Hello = (): JSX.Element => (
-  <h1>Hello from TypeScript/React!</h1>
-);
+import App from './components/App';
 
 ReactDOM.render(
-  <Hello />,
+  <App />,
   document.getElementById('root')
 );
-
