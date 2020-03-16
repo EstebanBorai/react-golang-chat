@@ -1,16 +1,15 @@
 import * as React from 'react';
+import ChatContext from 'contexts/chat';
 
-interface LoginProps {
-  onSubmit: (username: string) => Promise<void>;
-}
-
-const Login = ({ onSubmit }: LoginProps): JSX.Element => {
+const Login = (): JSX.Element => {
   const [username, setUsername] = React.useState('');
+
+  const { join } = React.useContext(ChatContext);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
-    onSubmit(username)
+    join(username)
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {

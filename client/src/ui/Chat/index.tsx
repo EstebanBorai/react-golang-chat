@@ -1,22 +1,16 @@
 import * as React from 'react';
 import { webSocket } from 'rxjs/webSocket';
-import { Message, Session } from '../App';
+import ChatContext, { Message } from 'contexts/chat';
 
-interface ChatProps {
-  messages: Message[];
-  session: Session;
-}
-
-const Chat = ({ messages, session }: ChatProps): JSX.Element => {
+const Chat = (): JSX.Element => {
   const [text, setText] = React.useState('');
+
+  const { send, messages } = React.useContext(ChatContext);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
-    session.socket.next({
-      author: 'me',
-      message: text
-    });
+    send(text);
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {

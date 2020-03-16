@@ -32,6 +32,8 @@ func main() {
 
 	if _, err := upgrader.Upgrade(conn); err != nil {
 		log.Fatal(err)
+	} else {
+		log.Println("New connection")
 	}
 
 	for {
@@ -49,7 +51,6 @@ func main() {
 			log.Fatal(err)
 		}
 
-		// log.Println(string(data))
 		message := string(data)
 		log.Printf("Received Message: %s\n", message)
 		wsutil.WriteServerText(conn, []byte(message))

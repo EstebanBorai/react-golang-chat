@@ -7,22 +7,14 @@ module.exports = {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist')
   },
-
   module: {
     rules: [
       {
-        test: /\.ts(x?)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "ts-loader"
-          }
+        test: /\.tsx?/,
+        loader: 'babel-loader',
+        include: [
+          path.resolve(__dirname, 'src')
         ]
-      },
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        loader: "source-map-loader"
       }
     ]
   },
@@ -67,6 +59,11 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.ts', '.tsx']
+    extensions: ['.js', '.ts', '.tsx'],
+    alias: {
+      components: path.resolve(__dirname, 'src/ui/components'),
+      contexts: path.resolve(__dirname, 'src/contexts'),
+      ui: path.resolve(__dirname, 'src/ui'),
+    }
   }
 };
