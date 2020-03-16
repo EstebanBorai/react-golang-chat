@@ -1,0 +1,28 @@
+#header {
+  align-items: center;
+  background-color: #007d9c;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  height: 64px;
+  justify-content: flex-start;
+  padding: 0 1rem;
+}
+
+#header h1 {
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+#header img {
+  margin-right: 1.5rem;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64px);
+  justify-content: center;
+  width: 100%;
+}

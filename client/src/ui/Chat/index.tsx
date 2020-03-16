@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import './chat.css';
 import { webSocket } from 'rxjs/webSocket';
 import ChatContext, { Message } from 'contexts/chat';
 

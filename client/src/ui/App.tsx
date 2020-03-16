@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import ChatContext, { ChatContextValue, ChatContextProvider } from 'contexts/chat';
 import Main from 'ui/Main';
 

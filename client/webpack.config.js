@@ -15,7 +15,19 @@ module.exports = {
         include: [
           path.resolve(__dirname, 'src')
         ]
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
     ]
   },
 

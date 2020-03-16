@@ -1,0 +1,14 @@
+#chat {
+  border: 1px solid red;
+}
+
+#chat-items {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#chat-items .message .error {
+  background-color: red;
+  color: #ffffff;
+}

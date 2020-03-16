@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import ChatContext from 'contexts/chat';
 
 const Login = (): JSX.Element => {

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { Observable } from 'rxjs';
 
