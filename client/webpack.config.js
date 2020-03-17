@@ -37,7 +37,7 @@ module.exports = {
       hash: true,
       template: './public/index.ejs',
       filename: 'index.html',
-      title: 'webpack-boilerplate'
+      title: 'WebSockets with Golang and React!'
     })
   ],
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import './login.css';
 import ChatContext from 'contexts/chat';
 
 const Login = (): JSX.Element => {
@@ -17,10 +18,16 @@ const Login = (): JSX.Element => {
   }
 
   return (
-    <section className="application-section">
-      <form action="" onSubmit={handleSubmit}>
-        <input type="text" name="username" value={username} onChange={handleChange} />
-      </form>
+    <section className="application-section" id="login">
+      <article>
+        <h3>Welcome to Gophers Chat Room!</h3>
+        <form action="" onSubmit={handleSubmit}>
+          <input type="text" name="username" value={username} onChange={handleChange} />
+          <label htmlFor="join">
+            <button type="submit" className="primary">Join</button>
+          </label>
+        </form>
+      </article>
     </section>
   );
 }
