@@ -34,6 +34,22 @@
   version = "v1.0.2"
 
 [[projects]]
+  digest = "1:ecd9aa82687cf31d1585d4ac61d0ba180e42e8a6182b85bd785fcca8dfeefc1b"
+  name = "github.com/joho/godotenv"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "23d116af351c84513e1946b527c88823e476be13"
+  version = "v1.3.0"
+
+[[projects]]
+  branch = "master"
+  digest = "1:b521da3425fcc378530c2456ee60f345ff68b1e79431a0f11894c4bbc8775115"
+  name = "github.com/mailru/easygo"
+  packages = ["netpoll"]
+  pruneopts = "UT"
+  revision = "3c14a0dc985f4cd7899588176a176809055d2b3b"
+
+[[projects]]
   branch = "master"
   digest = "1:72b7c210f8cfe1431d2f300fbf37f25e52aa77324b05ab6b698483054033803e"
   name = "golang.org/x/sys"
@@ -47,6 +63,8 @@
   input-imports = [
     "github.com/gobwas/ws",
     "github.com/gobwas/ws/wsutil",
+    "github.com/joho/godotenv",
+    "github.com/mailru/easygo/netpoll",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -1,58 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
-	"log"
-	"net"
-
-	"github.com/gobwas/ws"
-	"github.com/gobwas/ws/wsutil"
+	"github.com/estebanborai/simple-ws-in-go/server/config"
+	"github.com/estebanborai/simple-ws-in-go/server/websocket"
 )
 
-// Port represents the port to publish
-// the WebSocket
-const Port = 5200
-
-// ConnType represents "tcp" the type of
-// connection used by web sockets
-const ConnType string = "tcp"
-
 func main() {
-	fmt.Printf("Running @ ws://localhost:%d\n", Port)
-	listener, err := net.Listen(ConnType, ":5200")
+	conf := config.MustReadConfig()
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	conn, err := listener.Accept()
-
-	upgrader := ws.Upgrader{}
-
-	if _, err := upgrader.Upgrade(conn); err != nil {
-		log.Fatal(err)
-	} else {
-		log.Println("New connection")
-	}
-
-	for {
-		reader := wsutil.NewReader(conn, ws.StateServerSide)
-
-		_, err := reader.NextFrame()
-
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		data, err := ioutil.ReadAll(reader)
-
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		message := string(data)
-		log.Printf("Received Message: %s\n", message)
-		wsutil.WriteServerText(conn, []byte(message))
-	}
+	websocket.Serve(conf)
 }
