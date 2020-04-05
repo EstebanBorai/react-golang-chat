@@ -15,10 +15,9 @@ const Main = (): JSX.Element => {
         <h1>WebSockets with Golang and React!</h1>
       </header>
       <main>
-        {/* {
+        {
           author && !isOver ? <Chat /> : <Login />
-        } */}
-        <Chat />
+        }
       </main>
     </div>
   );

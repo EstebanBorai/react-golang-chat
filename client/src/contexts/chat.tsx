@@ -1,6 +1,5 @@
 import React from 'react';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
-import { Observable } from 'rxjs';
 
 export interface Message {
   author: string;
@@ -73,7 +72,7 @@ export const ChatContextProvider = (props: unknown): React.Context<ChatContextVa
   }
 
   const join = (username: string): void => {
-    let skt = webSocket('ws://127.0.0.1:5200');
+    let skt = webSocket('ws://127.0.0.1:8000/ws');
 
     skt.subscribe(
       handleReceiveMessage,

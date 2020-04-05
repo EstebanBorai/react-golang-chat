@@ -2,69 +2,16 @@
 
 
 [[projects]]
-  branch = "master"
-  digest = "1:368ba96ddacaae2fe265afcac3062a199908f7dc0c6569d6e05a7a13042cccf1"
-  name = "github.com/gobwas/httphead"
+  digest = "1:6d29f02f0f01c627c2be40fb7347669a9ff2aa215cb97747294c1d13ffa74bdd"
+  name = "github.com/gorilla/websocket"
   packages = ["."]
   pruneopts = "UT"
-  revision = "2c6c146eadee0b69f856f87e3e9f1d0cd6aad2f5"
-
-[[projects]]
-  digest = "1:bdfe3b97ff03e4f7252c74cfaefb20050a360c8fb760701014ebf99c9540abd1"
-  name = "github.com/gobwas/pool"
-  packages = [
-    ".",
-    "internal/pmath",
-    "pbufio",
-    "pbytes",
-  ]
-  pruneopts = "UT"
-  revision = "fa3125c39d7eca32e1387bb69b1b38dcb31b1e0b"
-  version = "v0.2.0"
-
-[[projects]]
-  digest = "1:aea6697202cefa9365797c4c8ad0a1dbdf15ba21600ddc599a9000629a2ecb6f"
-  name = "github.com/gobwas/ws"
-  packages = [
-    ".",
-    "wsutil",
-  ]
-  pruneopts = "UT"
-  revision = "05baaea2bbcfe8963301c62d9931c882d59595cd"
-  version = "v1.0.2"
-
-[[projects]]
-  digest = "1:ecd9aa82687cf31d1585d4ac61d0ba180e42e8a6182b85bd785fcca8dfeefc1b"
-  name = "github.com/joho/godotenv"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "23d116af351c84513e1946b527c88823e476be13"
-  version = "v1.3.0"
-
-[[projects]]
-  branch = "master"
-  digest = "1:b521da3425fcc378530c2456ee60f345ff68b1e79431a0f11894c4bbc8775115"
-  name = "github.com/mailru/easygo"
-  packages = ["netpoll"]
-  pruneopts = "UT"
-  revision = "3c14a0dc985f4cd7899588176a176809055d2b3b"
-
-[[projects]]
-  branch = "master"
-  digest = "1:72b7c210f8cfe1431d2f300fbf37f25e52aa77324b05ab6b698483054033803e"
-  name = "golang.org/x/sys"
-  packages = ["unix"]
-  pruneopts = "UT"
-  revision = "d101bd2416d505c0448a6ce8a282482678040a89"
+  revision = "b65e62901fc1c0d968042419e74789f6af455eb9"
+  version = "v1.4.2"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = [
-    "github.com/gobwas/ws",
-    "github.com/gobwas/ws/wsutil",
-    "github.com/joho/godotenv",
-    "github.com/mailru/easygo/netpoll",
-  ]
+  input-imports = ["github.com/gorilla/websocket"]
   solver-name = "gps-cdcl"
   solver-version = 1

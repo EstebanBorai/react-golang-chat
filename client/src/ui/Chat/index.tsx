@@ -1,6 +1,5 @@
 import React from 'react';
 import './chat.css';
-import { webSocket } from 'rxjs/webSocket';
 import ChatContext, { Message } from 'contexts/chat';
 import Bubble from './Bubble';
 
@@ -8,12 +7,6 @@ const Chat = (): JSX.Element => {
   const [text, setText] = React.useState('');
 
   const { send, messages } = React.useContext(ChatContext);
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-
-    send(text);
-  }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setText(event.target.value);
@@ -31,9 +24,11 @@ const Chat = (): JSX.Element => {
         />
       </ul>
       <div className="chat-input">
-        <form action="" onSubmit={handleSubmit}>
+        <form action="">
           <input type="text" name="text" value={text} onChange={handleChange} />
-          <button type="submit">Send</button>
+          <button type="button" onClick={() => {
+            send(text);
+          }}>Send</button>
         </form>
       </div>
     </section>

@@ -10,7 +10,7 @@ const Login = (): JSX.Element => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
-    join(username)
+    join(username);
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
