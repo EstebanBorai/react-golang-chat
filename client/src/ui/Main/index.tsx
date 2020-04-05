@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './main.css';
 import Login from 'ui/Login';
 import Chat from 'ui/Chat';
-import ChatContext, { ChatContextValue } from 'contexts/chat';
+import ChatContext, { ChatContextInterface } from 'contexts/chat';
 import GolangLogo from 'components/GolangLogo';
 
 const Main = (): JSX.Element => {
-  const { author, isOver } = React.useContext(ChatContext);
+  const { author } = useContext<ChatContextInterface>(ChatContext);
 
   return (
     <div>
@@ -16,7 +16,7 @@ const Main = (): JSX.Element => {
       </header>
       <main>
         {
-          author && !isOver ? <Chat /> : <Login />
+          author ? <Chat /> : <Login />
         }
       </main>
     </div>

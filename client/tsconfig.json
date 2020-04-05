@@ -1,17 +1,30 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
     "sourceMap": true,
     "jsx": "react",
+    "esModuleInterop": true,
+    "target": "ES2020",
+    "outDir": "dist",
+    "noImplicitAny": false,
+    "noEmit": true,
+    "strictNullChecks": false,
+    "suppressExcessPropertyErrors": false,
+    "suppressImplicitAnyIndexErrors": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
   },
   "paths": {
-    "@types/*": [
-      "src/@types/*"
+    "contexts/*": [
+      "src/contexts/*"
     ],
     "components/*": [
       "src/ui/components/*"
     ],
-    "contexts/*": [
-      "src/contexts/*"
+    "helpers/*": [
+      "src/helpers/*"
     ],
     "ui/*": [
       "src/ui/*"

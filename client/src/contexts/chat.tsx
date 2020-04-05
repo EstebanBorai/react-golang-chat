@@ -1,119 +1,52 @@
-import React from 'react';
-import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
+import React, { Context, useState, createContext, useEffect } from 'react';
+import { Author, Message, ChatServiceInterface } from '../services/ChatService';
 
-export interface Message {
-  author: string;
-  message: string;
-}
-
-export interface ChatContextValue {
-  socket: WebSocketSubject<Message>;
-  author?: string;
+export interface ChatContextInterface {
+  author?: Author;
   messages: Message[];
   error?: string;
-  isOver: boolean;
   join: (username: string) => void;
   send: (message: string) => void;
 }
 
 export interface ChatContextProps {
-  children: JSX.Element | JSX.Element[];
+  service: ChatServiceInterface;
+  children: JSX.Element;
 }
 
-export interface ChatContextState {
-  socket: WebSocketSubject<Message>;
-  messages: Message[];
-  error?: string;
-  isOver: boolean;
-  author: string;
-}
-
-const intialContext: ChatContextValue = {
-  messages: [],
-  author: '',
-  error: null,
-  isOver: false,
-  join: null,
-  send: null,
-}
-
-const ChatContext = React.createContext<ChatContextValue>(intialContext);
+const ChatContext = createContext<Context<ChatContextInterface>>(null);
 
 ChatContext.displayName = 'ChatContext';
 
-export const ChatContextProvider = (props: unknown): React.Context<ChatContextValue> => {
-  const [context, setContext] = React.useState<ChatContextState>({
-    socket: null,
-    messages: [],
-    error: null,
-    isOver: false,
-    author: ''
-  });
+export function ChatContextProvider(props: ChatContextProps): JSX.Element {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [author, setAuthor] = useState<Author>(null);
 
-  const handleReceiveMessage = (message: Message): void => {
-    setContext({
-      ...context,
-      messages: [...context.messages, message]
+  useEffect(() => {
+    props.service.messages.subscribe((next) => {
+      setMessages(next);
     });
-  }
 
-  const handleError = (err: string): void => {
-    setContext({
-      ...context,
-      error: err,
+    props.service.author.subscribe((next) => {
+      setAuthor(next);
     });
-  }
 
-  const handleCompletion = (): void => {
-    setContext({
-      ...context,
-      isOver: true
-    });
-  }
-
-  const join = (username: string): void => {
-    let skt = webSocket('ws://127.0.0.1:8000/ws');
-
-    skt.subscribe(
-      handleReceiveMessage,
-      handleError,
-      handleCompletion
-    );
-
-    const multiplexSession = skt.multiplex(
-      () => ({ subscribe: username }),
-      () => ({ unsubscribe: username }),
-      (message: Message) => handleReceiveMessage(message)
-    );
-
-    setContext({
-      ...context,
-      socket: skt,
-      isOver: false,
-      author: username,
-    });
-  }
-
-  const send = (message: string): void => {
-    context.socket.next({
-      author: context.author,
-      message
-    });
-  }
+    return () => {
+      props.service.messages.unsubscribe();
+      props.service.author.unsubscribe();
+    };
+  }, []);
 
   return (
     <ChatContext.Provider value={{
-      ...context,
-      join,
-      send
+      author,
+      messages,
+      join: props.service.join,
+      send: props.service.send
     }}>
-      {
-        props.children
-      }
+      {props.children}
     </ChatContext.Provider>
   );
 }
-
-export const ChatContextConsumer = ChatContext.Consumer;
 
 export default ChatContext;

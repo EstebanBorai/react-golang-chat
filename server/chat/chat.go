@@ -46,6 +46,7 @@ func NewChat(options *Options) *Chat {
 
 	chat.clients = make(map[*websocket.Conn]*Client)
 	chat.upgrader = upgrader
+	chat.broadcast = make(chan Message)
 
 	go chat.handleMessages()
 
@@ -58,10 +59,18 @@ func (chat *Chat) handleMessages() {
 
 	if chat.options != nil && chat.options.logger {
 		log.Printf("Received message:\t%v\n", message)
+
+		for _, value := range chat.clients {
+			log.Printf("Client: %s\n", value.Username)
+		}
 	}
 
 	for client := range chat.clients {
 		err := client.WriteJSON(message)
+
+		if chat.options != nil && chat.options.logger {
+			log.Printf("Attempt to broadcast message:\t%v\n", message)
+		}
 
 		if err != nil {
 			if chat.options != nil && chat.options.logger {
@@ -76,6 +85,15 @@ func (chat *Chat) handleMessages() {
 
 func (chat *Chat) handleRequests() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		keys, ok := r.URL.Query()["uid"]
+
+		if !ok || len(keys[0]) < 1 {
+			w.Write([]byte("Missing uid param"))
+			return
+		}
+
+		uid := keys[0]
+
 		ws, err := chat.upgrader.Upgrade(w, r, nil)
 
 		if err != nil {
@@ -88,7 +106,7 @@ func (chat *Chat) handleRequests() http.HandlerFunc {
 
 		defer ws.Close()
 
-		chat.clients[ws] = NewClient("foo")
+		chat.clients[ws] = NewClient(uid)
 
 		if chat.options != nil && chat.options.logger {
 			log.Printf("Register a new client:\t%v\n", chat.clients[ws])

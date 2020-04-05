@@ -4,9 +4,9 @@ import "time"
 
 // Message represents a chat message
 type Message struct {
-	Author   *Client
-	Message  string
-	IssuedAt time.Time
+	Author   *Client   `json:"author"`
+	Message  string    `json:"message"`
+	IssuedAt time.Time `json:"issuedAt"`
 }
 
 // NewMessage creates an instance of Message and returns

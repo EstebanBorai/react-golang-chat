@@ -1,6 +1,7 @@
 import React from 'react';
 
 interface BubbleProps {
+  isOwner?: boolean;
   body: string;
 }
 
