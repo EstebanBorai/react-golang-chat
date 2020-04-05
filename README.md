@@ -1,2 +1,2 @@
-# simple-ws-in-go
-🐹 A simple chat application made with ReactJS and Go using gobwas/ws
+# go-chat
+🐹 A simple implementation of chat application using Go and ReactJS
