@@ -55,30 +55,21 @@ func NewChat(options *Options) *Chat {
 
 // Broadcast received messages to clients
 func (chat *Chat) handleMessages() {
-	message := <-chat.broadcast
-
-	if chat.options != nil && chat.options.logger {
-		log.Printf("Received message:\t%v\n", message)
-
-		for _, value := range chat.clients {
-			log.Printf("Client: %s\n", value.Username)
-		}
-	}
-
-	for client := range chat.clients {
-		err := client.WriteJSON(message)
+	for {
+		msg := <-chat.broadcast
 
 		if chat.options != nil && chat.options.logger {
-			log.Printf("Attempt to broadcast message:\t%v\n", message)
+			log.Printf("Received message:\t%v\n", msg)
 		}
 
-		if err != nil {
-			if chat.options != nil && chat.options.logger {
-				log.Printf("Error occurred broadcasting message:\t%v\n", err)
-			}
+		for client := range chat.clients {
+			err := client.WriteJSON(msg)
 
-			client.Close()
-			delete(chat.clients, client)
+			if err != nil {
+				log.Printf("Error writting message: %v\n", err)
+				client.Close()
+				delete(chat.clients, client)
+			}
 		}
 	}
 }
