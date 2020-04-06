@@ -22,9 +22,9 @@ const Chat = (): JSX.Element => {
     <section className="application-section" id="chat-session">
       <ul className="chat">
         {
-          messages && messages.length && messages.map((message: Message) => {
-            <Bubble isOwner={message.author.username === author.username} body={message.message} />
-          })
+          messages.map((m: Message, index) => (
+          <Bubble key={index} message={m} me={author} />
+          ))
         }
       </ul>
       <div className="chat-input">

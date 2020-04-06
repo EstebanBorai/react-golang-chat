@@ -2,7 +2,7 @@ package chat
 
 // Client represents a chat client
 type Client struct {
-	Username string
+	Username string `json:"username"`
 }
 
 // NewClient creates an instance of a client

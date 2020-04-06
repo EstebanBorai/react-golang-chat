@@ -1,6 +1,7 @@
 package chat
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -53,6 +54,19 @@ func NewChat(options *Options) *Chat {
 	return chat
 }
 
+// Broadcast a message to all clients
+func (chat *Chat) Broadcast(message *Message) {
+	for client := range chat.clients {
+		err := client.WriteJSON(message)
+
+		if err != nil {
+			log.Printf("Error writting message: %v\n", err)
+			client.Close()
+			delete(chat.clients, client)
+		}
+	}
+}
+
 // Broadcast received messages to clients
 func (chat *Chat) handleMessages() {
 	for {
@@ -62,15 +76,7 @@ func (chat *Chat) handleMessages() {
 			log.Printf("Received message:\t%v\n", msg)
 		}
 
-		for client := range chat.clients {
-			err := client.WriteJSON(msg)
-
-			if err != nil {
-				log.Printf("Error writting message: %v\n", err)
-				client.Close()
-				delete(chat.clients, client)
-			}
-		}
+		chat.Broadcast(&msg)
 	}
 }
 
@@ -102,6 +108,8 @@ func (chat *Chat) handleRequests() http.HandlerFunc {
 		if chat.options != nil && chat.options.logger {
 			log.Printf("Register a new client:\t%v\n", chat.clients[ws])
 		}
+
+		chat.Broadcast(NewMessage(nil, fmt.Sprintf("%s joined the chat!\n", uid)))
 
 		for {
 			var message Message

@@ -1,33 +1,36 @@
 import React from 'react';
+import { Message, Author } from '../../services/ChatService';
 
 interface BubbleProps {
-  isOwner?: boolean;
-  body: string;
+  message: Message;
+  me: Author;
 }
 
-const COLORS = {
-  me: {
-    backgroundColor: '#2392fd',
-    color: '#ffffff'
-  },
-  they: {
-    backgroundColor: '#e9e9eb',
-    color: '#000000'
+const Bubble = ({ message, me }: BubbleProps): JSX.Element => {
+  const isOwner = message.author && message.author.username === me.username;
+  const isSystem = !message.author;
+
+  if (isSystem) {
+    return (
+      <li className="bubble-container system">
+        <article className="bubble">
+          <p>
+            {message.message}
+          </p>
+        </article>
+      </li>
+    );
   }
-}
-
-const Bubble = ({ isOwner, body }: BubbleProps): JSX.Element => {
-  const colorScheme = isOwner ? COLORS.me : COLORS.they;
-
-  const style = {
-    ...colorScheme,
-  };
 
   return (
-    <li className="bubble" style={style}>
-      <p>
-        {body}
-      </p>
+    <li className={`bubble-container${isOwner ? ' owner' : ''}`}>
+      <article className="bubble">
+        <small>{message.author.username}</small>
+        <p>
+          {message.message}
+        </p>
+      </article>
+      <time>{message.issuedAt}</time>
     </li>
   );
 }

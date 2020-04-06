@@ -24,7 +24,7 @@ export function ChatContextProvider(props: ChatContextProps): JSX.Element {
 
   useEffect(() => {
     props.service.messages.subscribe((next) => {
-      setMessages(next);
+      setMessages([...next]);
     });
 
     props.service.author.subscribe((next) => {
