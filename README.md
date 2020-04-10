@@ -1,2 +1,2 @@
-# go-chat
-🐹 A simple implementation of a chat application using Go and ReactJS
+# gabble
+💬 Tiny chat implementation made with Go and ReactJS
