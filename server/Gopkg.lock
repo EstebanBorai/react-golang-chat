@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  branch = "master"
+  digest = "1:d60eb25cf609599715b499de913bcb30a871e158a21236d232728bc147de741e"
+  name = "github.com/estebanborai/simple-ws-in-go"
+  packages = ["server/chat"]
+  pruneopts = "UT"
+  revision = "e2fcc3f658ee6cae48eef558fd680e7da5f3b882"
+
+[[projects]]
   digest = "1:6d29f02f0f01c627c2be40fb7347669a9ff2aa215cb97747294c1d13ffa74bdd"
   name = "github.com/gorilla/websocket"
   packages = ["."]
@@ -12,6 +20,9 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["github.com/gorilla/websocket"]
+  input-imports = [
+    "github.com/estebanborai/simple-ws-in-go/server/chat",
+    "github.com/gorilla/websocket",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
