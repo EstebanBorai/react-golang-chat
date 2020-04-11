@@ -1,9 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import App from 'ui/App';
-import './main.css';
+import './index.css';
 
 ReactDOM.render(
-  <App />,
+  <h1>gabble</h1>,
   document.getElementById('root')
 );

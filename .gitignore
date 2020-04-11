@@ -132,7 +132,7 @@ Thumbs.db
 
 # JavaScript #
 ##############
-node_modules/
+client/node_modules/
 bundle
 .cache
 .vendor-new
