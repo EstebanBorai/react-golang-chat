@@ -1,0 +1,40 @@
+@import '~/styles/theme.scss';
+
+.chat-thumbnail {
+  background-color: #ffffff;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  box-sizing: border-box;
+  display: flex;
+  padding: .4rem;
+  width: 400px;
+
+  figure {
+    width: 50px;
+    margin: 0 1rem 0 0;
+
+    img {
+      border-radius: 100%;
+    }
+  }
+
+  article {
+    max-height: 60px;
+
+    h3 {
+      margin: 0 0 .5rem 0;
+    }
+
+    span {
+      color: $soft-grey;
+      display: inline-block;
+      font-size: .9rem;
+      text-overflow: ellipsis;
+      max-width: 300px;
+    }
+  }
+
+  div {
+
+  }
+}

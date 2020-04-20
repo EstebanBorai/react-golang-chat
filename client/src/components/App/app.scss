@@ -1,0 +1,22 @@
+$grid-gap: .8rem;
+
+#gabble {
+  display: grid;
+  grid-template-rows: 70px auto;
+  height: 100vh;
+  max-height: 100vh;
+  gap: $grid-gap;
+
+  #app-main {
+    box-sizing: border-box;
+    grid-row: 2 / 2;
+    padding: 0 .8rem;
+
+    #chat-main {
+      height: calc(100vh - 181px);
+      display: grid;
+      grid-template-columns: 30% auto;
+      margin-top: .8rem;
+    }
+  }
+}

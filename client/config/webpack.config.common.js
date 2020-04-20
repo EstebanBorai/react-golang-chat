@@ -10,6 +10,9 @@ const config = {
     main: helpers.root('src', 'main')
   },
   resolve: {
+    alias: {
+      '~': helpers.root('src'),
+    },
     extensions: [
       '.js',
       '.ts',
@@ -59,11 +62,11 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'webpack-boilerplate | Update this from the config/webpack.config.common.js',
+      title: 'Gabble | Chat',
       template: 'public/index.ejs',
       favicon: 'public/favicon.png',
       meta: {
-        'description': 'Your project description',
+        'description': 'Gabble a nice chat',
         'theme-color': '#dac8b3'
       }
     })

@@ -1,0 +1,24 @@
+@import '~/styles/theme.scss';
+
+#app-header {
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  box-shadow: $box-shadow;
+  display: flex;
+  grid-row: 1 / 1;
+  justify-content: space-between;
+  padding: .5rem 3%;
+  width: 100%;
+
+  h1 {
+    color: #333;
+    font-size: 1.6rem;
+    margin: 0;
+  }
+
+  b {
+    font-weight: 600;
+    color: $soft-grey;
+  }
+}
